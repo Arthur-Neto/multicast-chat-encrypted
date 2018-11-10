@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Apresentação", "1. Apr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.WinApp", "Chat.WinApp\Chat.WinApp.csproj", "{49EDCF2B-1FA8-47EC-8FEF-5BB336DE7FC3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Infraestrutura", "2. Infraestrutura", "{97C5DCB8-DD9E-4513-AC55-791AD6EFE8FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Infraestrutura.Crypto", "Chat.Infraestrutura.Crypto\Chat.Infraestrutura.Crypto.csproj", "{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{49EDCF2B-1FA8-47EC-8FEF-5BB336DE7FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49EDCF2B-1FA8-47EC-8FEF-5BB336DE7FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49EDCF2B-1FA8-47EC-8FEF-5BB336DE7FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{49EDCF2B-1FA8-47EC-8FEF-5BB336DE7FC3} = {0D59E79D-B872-4715-88D7-BA95AF00BC6B}
+		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370} = {97C5DCB8-DD9E-4513-AC55-791AD6EFE8FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC3E3E71-85C8-4756-B37F-70F204E05EAA}

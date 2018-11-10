@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comandos\MensagemAdicionarComando.cs" />
+    <Compile Include="Modelos\MensagemRecebidaModelo.cs" />
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chat.Infraestrutura.Crypto\Chat.Infraestrutura.Crypto.csproj">
+      <Project>{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}</Project>
+      <Name>Chat.Infraestrutura.Crypto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
