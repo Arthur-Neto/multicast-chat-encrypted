@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Dominio", "Chat.Dominio\Chat.Dominio.csproj", "{221C4416-7A8F-4961-A8B8-170A714932E2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Serviços Distribuidos", "1. Serviços Distribuidos", "{A1C3356D-D022-4250-A7E7-919A81183B08}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Dominio", "2. Dominio", "{8C8E5F02-549E-4FD1-AE8C-1B48EEB9AB01}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infraestrutura", "3. Infraestrutura", "{2B8C3C08-2BE7-47D4-BC91-391D7E000590}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Server", "Chat.Server\Chat.Server.csproj", "{035D2550-4A80-4215-B6E4-E65C476BCCB6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Infraestrutura", "2. Infraestrutura", "{2B8C3C08-2BE7-47D4-BC91-391D7E000590}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Infraestrutura.Crypto", "Chat.Infraestrutura.Crypto\Chat.Infraestrutura.Crypto.csproj", "{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}"
 EndProject
@@ -21,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{221C4416-7A8F-4961-A8B8-170A714932E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{221C4416-7A8F-4961-A8B8-170A714932E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{221C4416-7A8F-4961-A8B8-170A714932E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{221C4416-7A8F-4961-A8B8-170A714932E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{035D2550-4A80-4215-B6E4-E65C476BCCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{035D2550-4A80-4215-B6E4-E65C476BCCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{035D2550-4A80-4215-B6E4-E65C476BCCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{035D2550-4A80-4215-B6E4-E65C476BCCB6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,8 +24,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{221C4416-7A8F-4961-A8B8-170A714932E2} = {8C8E5F02-549E-4FD1-AE8C-1B48EEB9AB01}
-		{035D2550-4A80-4215-B6E4-E65C476BCCB6} = {A1C3356D-D022-4250-A7E7-919A81183B08}
 		{48EBFA63-6D0D-4FE3-AB86-413DA9D78370} = {2B8C3C08-2BE7-47D4-BC91-391D7E000590}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

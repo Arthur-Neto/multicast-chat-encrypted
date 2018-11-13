@@ -44,11 +44,5 @@
     <Compile Include="Crypto\AesCriptografia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Chat.Dominio\Chat.Dominio.csproj">
-      <Project>{221C4416-7A8F-4961-A8B8-170A714932E2}</Project>
-      <Name>Chat.Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

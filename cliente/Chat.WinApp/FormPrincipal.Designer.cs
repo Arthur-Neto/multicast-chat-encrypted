@@ -36,13 +36,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxIP = new System.Windows.Forms.TextBox();
             this.textBoxUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonDesconectar = new System.Windows.Forms.Button();
             this.buttonConectar = new System.Windows.Forms.Button();
             this.labelPorta = new System.Windows.Forms.Label();
             this.textBoxPorta = new System.Windows.Forms.TextBox();
-            this.textBoxIp = new System.Windows.Forms.TextBox();
             this.labelIp = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -120,18 +120,26 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.textBoxIP);
             this.panel4.Controls.Add(this.textBoxUsuario);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonDesconectar);
             this.panel4.Controls.Add(this.buttonConectar);
             this.panel4.Controls.Add(this.labelPorta);
             this.panel4.Controls.Add(this.textBoxPorta);
-            this.panel4.Controls.Add(this.textBoxIp);
             this.panel4.Controls.Add(this.labelIp);
             this.panel4.Location = new System.Drawing.Point(5, 12);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(769, 34);
             this.panel4.TabIndex = 104;
+            // 
+            // textBoxIP
+            // 
+            this.textBoxIP.Location = new System.Drawing.Point(29, 8);
+            this.textBoxIP.Name = "textBoxIP";
+            this.textBoxIP.Size = new System.Drawing.Size(160, 20);
+            this.textBoxIP.TabIndex = 1;
+            this.textBoxIP.Text = "224.0.0.1";
             // 
             // textBoxUsuario
             // 
@@ -187,13 +195,6 @@
             this.textBoxPorta.Size = new System.Drawing.Size(66, 20);
             this.textBoxPorta.TabIndex = 2;
             // 
-            // textBoxIp
-            // 
-            this.textBoxIp.Location = new System.Drawing.Point(29, 8);
-            this.textBoxIp.Name = "textBoxIp";
-            this.textBoxIp.Size = new System.Drawing.Size(160, 20);
-            this.textBoxIp.TabIndex = 1;
-            // 
             // labelIp
             // 
             this.labelIp.AutoSize = true;
@@ -220,6 +221,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormPrincipal_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -245,10 +247,10 @@
         private System.Windows.Forms.Button buttonConectar;
         private System.Windows.Forms.Label labelPorta;
         private System.Windows.Forms.TextBox textBoxPorta;
-        private System.Windows.Forms.TextBox textBoxIp;
         private System.Windows.Forms.Label labelIp;
         private System.Windows.Forms.TextBox textBoxUsuario;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxIP;
     }
 }
 
