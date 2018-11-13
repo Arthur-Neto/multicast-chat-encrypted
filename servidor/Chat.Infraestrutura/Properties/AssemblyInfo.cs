@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Chat.Infraestrutura.Crypto")]
+[assembly: AssemblyTitle("Chat.Infraestrutura")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Chat.Infraestrutura.Crypto")]
+[assembly: AssemblyProduct("Chat.Infraestrutura")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("48ebfa63-6d0d-4fe3-ab86-413da9d78370")]
+[assembly: Guid("2f05550f-9757-4fcc-83c2-b6f74d3de410")]
 
 // Version information for an assembly consists of the following four values:
 //

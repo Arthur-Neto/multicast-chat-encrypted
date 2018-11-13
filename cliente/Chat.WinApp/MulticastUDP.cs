@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chat.Infraestrutura.Crypto;
+using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -12,12 +13,14 @@ namespace Chat.WinApp
         private readonly IPAddress _enderecoLocal;
         private readonly IPEndPoint _endPointLocal;
         private readonly IPEndPoint _endPointRemoto;
+        private readonly string _chaveCriptografia;
 
-        public MulticastUDP(IPAddress enderecoIpMulticast, int porta, IPAddress enderecoIpLocal = null)
+        public MulticastUDP(IPAddress enderecoIpMulticast, int porta, string chave, IPAddress enderecoIpLocal = null)
         {
             _grupo = enderecoIpMulticast;
             _porta = porta;
             _enderecoLocal = enderecoIpLocal;
+            _chaveCriptografia = chave;
             if (enderecoIpLocal == null)
                 _enderecoLocal = IPAddress.Any;
 
@@ -38,7 +41,7 @@ namespace Chat.WinApp
 
         public void FecharConexao()
         {
-            _cliente.Close();
+            _cliente.DropMulticastGroup(_grupo);
         }
 
         public void EnviarMulticast(byte[] bufferEnviar)

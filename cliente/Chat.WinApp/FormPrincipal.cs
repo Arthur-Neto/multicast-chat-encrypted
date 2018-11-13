@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Chat.Infraestrutura.Crypto;
+using System;
+using System.IO;
 using System.Net;
-using System.Text;
+using System.Net.Sockets;
 using System.Windows.Forms;
 
 namespace Chat.WinApp
@@ -11,17 +13,38 @@ namespace Chat.WinApp
         private string _grupoMulticast;
         private int _porta;
         private string _nomeUsuario;
+        private string _chave;
 
         public FormPrincipal()
         {
             InitializeComponent();
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"https://localhost:44389/api/cryptokey/");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                _chave = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("Servidor contendo a chave de criptografia esta offline", "Erro");
+                Environment.Exit(Environment.ExitCode);
+            }
         }
 
         private void buttonConectar_Click(object sender, System.EventArgs e)
         {
             _grupoMulticast = textBoxIP.Text;
-            _porta = Convert.ToInt32(textBoxPorta.Text);
-            _nomeUsuario = textBoxUsuario.Text;
+            try
+            {
+                _porta = Convert.ToInt32(textBoxPorta.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Formato da porta incorreto", "Erro");
+                return;
+            }
+            _nomeUsuario = string.IsNullOrWhiteSpace(textBoxUsuario.Text) ? "otario que não bota o nome" : textBoxUsuario.Text;
             textBoxConversa.Clear();
             textBoxInput.Clear();
             listBoxOnline.Items.Clear();
@@ -50,7 +73,7 @@ namespace Chat.WinApp
 
         private void buttonEnviar_Click(object sender, System.EventArgs e)
         {
-            byte[] buffer = Encoding.UTF8.GetBytes($"{_nomeUsuario} escreveu: {textBoxInput.Text}");
+            byte[] buffer = AesCriptografia.Criptografar($"{_nomeUsuario} escreveu: {textBoxInput.Text}", _chave);
 
             _envelopadorUdp.EnviarMulticast(buffer);
 
@@ -59,12 +82,20 @@ namespace Chat.WinApp
 
         private bool EntrarNoGrupo()
         {
-            IPAddress multicastIp = IPAddress.Parse(_grupoMulticast);
+            try
+            {
+                IPAddress multicastIp = IPAddress.Parse(_grupoMulticast);
 
-            _envelopadorUdp = new MulticastUDP(multicastIp, _porta, IPAddress.Any);
-            _envelopadorUdp.MensagemUDPRecebida += AoReceberMensagemUDP;
+                _envelopadorUdp = new MulticastUDP(multicastIp, _porta, _chave, IPAddress.Any);
+                _envelopadorUdp.MensagemUDPRecebida += AoReceberMensagemUDP;
+            }
+            catch (SocketException)
+            {
+                MessageBox.Show("Endereço IP inválido", "Erro");
+                return false;
+            }
 
-            byte[] buffer = Encoding.UTF8.GetBytes($"{_nomeUsuario} entrou na sala");
+            byte[] buffer = AesCriptografia.Criptografar($"{_nomeUsuario} entrou na sala", _chave);
 
             _envelopadorUdp.EnviarMulticast(buffer);
 
@@ -73,7 +104,7 @@ namespace Chat.WinApp
 
         private void SairDoGrupo()
         {
-            byte[] buffer = Encoding.UTF8.GetBytes($"{_nomeUsuario} saiu da sala");
+            byte[] buffer = AesCriptografia.Criptografar($"{_nomeUsuario} saiu da sala", _chave);
 
             _envelopadorUdp.EnviarMulticast(buffer);
 
@@ -82,7 +113,7 @@ namespace Chat.WinApp
 
         private void AoReceberMensagemUDP(object sender, MulticastUDP.UdpMessageReceivedEventArgs e)
         {
-            string textoRecebido = Encoding.UTF8.GetString(e.Buffer);
+            string textoRecebido = AesCriptografia.Descriptografar(e.Buffer, _chave);
             EscreverTextBox(textoRecebido);
         }
 
