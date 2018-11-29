@@ -23,6 +23,7 @@ namespace Chat.WinApp
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"https://localhost:44389/api/cryptokey/");
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 _chave = new StreamReader(response.GetResponseStream()).ReadToEnd();
             }
             catch (WebException)
