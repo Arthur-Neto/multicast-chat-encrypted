@@ -21,7 +21,7 @@ namespace Chat.WinApp
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"https://172.31.221.33:44381/api/cryptokey/");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"https://192.168.25.66:44381/api/cryptokey/");
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 _chave = new StreamReader(response.GetResponseStream()).ReadToEnd();
@@ -87,7 +87,7 @@ namespace Chat.WinApp
             {
                 IPAddress multicastIp = IPAddress.Parse(_grupoMulticast);
 
-                _envelopadorUdp = new MulticastUDP(multicastIp, _porta, _chave, IPAddress.Any);
+                _envelopadorUdp = new MulticastUDP(multicastIp, _porta, _chave);
                 _envelopadorUdp.MensagemUDPRecebida += AoReceberMensagemUDP;
             }
             catch (SocketException)
@@ -131,6 +131,19 @@ namespace Chat.WinApp
         private void FormPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        public IPAddress GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip;
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
